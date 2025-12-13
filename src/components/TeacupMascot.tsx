@@ -8,11 +8,10 @@ interface TeacupMascotProps {
 }
 
 const EXPRESSIONS = [
-  { emoji: "🍵", mood: "Happy", bubble: "Engineering is brewing!" },
-  { emoji: "☕", mood: "Sipping", bubble: "*sip* *sip*" },
-  { emoji: "🫖", mood: "Steam", bubble: "~steam rising~" },
-  { emoji: "🤔", mood: "Thinking", bubble: "Calculating torque..." },
-  { emoji: "⚙️", mood: "Mechanical", bubble: "Gears turning!" },
+  { emoji: "☕", mood: "Hot Cup", bubble: "Fresh brew!" },
+  { emoji: "🍵", mood: "Tea Cup", bubble: "*sip* *sip*" },
+  { emoji: "🕺", mood: "Dancing", bubble: "Feeling groovy~" },
+  { emoji: "🥵", mood: "Hot Face", bubble: "Too hot!" },
 ];
 
 export function TeacupMascot({ isSoundEnabled, onSoundToggle }: TeacupMascotProps) {

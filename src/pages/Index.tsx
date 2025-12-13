@@ -5,7 +5,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArticlesSection } from "@/components/ArticlesSection";
 import { Footer } from "@/components/Footer";
-import { LeadScrewIndicator } from "@/components/LeadScrewIndicator";
+import { RailwayDivider } from "@/components/RailwayDivider";
 import { useScrollSound } from "@/hooks/useScrollSound";
 
 // ============================================
@@ -133,12 +133,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <LeadScrewIndicator />
       <Navbar isSoundEnabled={isSoundEnabled} onSoundToggle={toggleSound} />
       <HeroSection data={DATA.hero} />
       <TechMarquee />
+      <RailwayDivider />
       <AboutSection data={DATA.about} />
+      <RailwayDivider />
       <ProjectsSection projects={DATA.projects} />
+      <RailwayDivider />
       <ArticlesSection articles={DATA.articles} />
       <Footer />
     </div>
