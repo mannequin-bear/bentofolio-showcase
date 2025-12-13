@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, ArrowDown } from "lucide-react";
+import { BackgroundGears } from "./BackgroundGears";
 
 interface HeroData {
   name: string;
@@ -18,7 +19,8 @@ interface HeroSectionProps {
 
 export function HeroSection({ data }: HeroSectionProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-4 pt-20">
+    <section className="min-h-screen flex items-center justify-center relative px-4 pt-20 overflow-hidden">
+      <BackgroundGears />
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

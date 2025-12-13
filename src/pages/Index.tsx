@@ -5,6 +5,8 @@ import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArticlesSection } from "@/components/ArticlesSection";
 import { Footer } from "@/components/Footer";
+import { LeadScrewIndicator } from "@/components/LeadScrewIndicator";
+import { useScrollSound } from "@/hooks/useScrollSound";
 
 // ============================================
 // EDIT YOUR CONTENT HERE
@@ -127,9 +129,12 @@ const DATA = {
 };
 
 const Index = () => {
+  const { isSoundEnabled, toggleSound } = useScrollSound();
+
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <LeadScrewIndicator />
+      <Navbar isSoundEnabled={isSoundEnabled} onSoundToggle={toggleSound} />
       <HeroSection data={DATA.hero} />
       <TechMarquee />
       <AboutSection data={DATA.about} />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { TeacupMascot } from "./TeacupMascot";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -9,7 +10,12 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  isSoundEnabled: boolean;
+  onSoundToggle: () => void;
+}
+
+export function Navbar({ isSoundEnabled, onSoundToggle }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,6 +48,7 @@ export function Navbar() {
             >
               Get in Touch
             </a>
+            <TeacupMascot isSoundEnabled={isSoundEnabled} onSoundToggle={onSoundToggle} />
           </div>
 
           {/* Mobile Menu Button */}
