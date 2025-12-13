@@ -2,7 +2,33 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Train } from "lucide-react";
 
-export function RailwayDivider() {
+interface RailwayDividerProps {
+  direction?: "left-to-right" | "right-to-left";
+}
+
+// Smoke particle component
+function SmokeParticle({ delay, offsetX, offsetY }: { delay: number; offsetX: number; offsetY: number }) {
+  return (
+    <motion.div
+      className="absolute w-3 h-3 rounded-full bg-muted-foreground/40"
+      initial={{ opacity: 0.6, scale: 0.5, x: offsetX, y: offsetY }}
+      animate={{
+        opacity: [0.6, 0.3, 0],
+        scale: [0.5, 1.2, 1.8],
+        y: [offsetY, offsetY - 20, offsetY - 35],
+        x: [offsetX, offsetX + (Math.random() - 0.5) * 15, offsetX + (Math.random() - 0.5) * 25],
+      }}
+      transition={{
+        duration: 1.5,
+        delay,
+        repeat: Infinity,
+        ease: "easeOut",
+      }}
+    />
+  );
+}
+
+export function RailwayDivider({ direction = "left-to-right" }: RailwayDividerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -10,8 +36,15 @@ export function RailwayDivider() {
     offset: ["start end", "end start"],
   });
 
-  // Map scroll progress to train position (0% to 100%)
-  const trainProgress = useTransform(scrollYProgress, [0.2, 0.8], [0, 100]);
+  // Map scroll progress to train position based on direction
+  const trainProgress = useTransform(
+    scrollYProgress, 
+    [0.2, 0.8], 
+    direction === "left-to-right" ? [0, 100] : [100, 0]
+  );
+
+  // Flip train icon based on direction
+  const trainScaleX = direction === "right-to-left" ? -1 : 1;
 
   return (
     <div ref={containerRef} className="relative w-full py-8 overflow-hidden">
@@ -112,7 +145,7 @@ export function RailwayDivider() {
         })}
       </svg>
 
-      {/* Animated Train */}
+      {/* Animated Train with Smoke */}
       <motion.div
         className="absolute top-1/2 -translate-y-1/2"
         style={{
@@ -120,10 +153,27 @@ export function RailwayDivider() {
           x: "-50%",
         }}
       >
+        {/* Smoke particles - positioned behind the train */}
+        <div 
+          className="absolute top-1/2 -translate-y-1/2"
+          style={{ 
+            [direction === "left-to-right" ? "right" : "left"]: "100%",
+            marginRight: direction === "left-to-right" ? "5px" : undefined,
+            marginLeft: direction === "right-to-left" ? "5px" : undefined,
+          }}
+        >
+          <SmokeParticle delay={0} offsetX={0} offsetY={-5} />
+          <SmokeParticle delay={0.2} offsetX={-5} offsetY={-3} />
+          <SmokeParticle delay={0.4} offsetX={5} offsetY={-7} />
+          <SmokeParticle delay={0.6} offsetX={-3} offsetY={-4} />
+          <SmokeParticle delay={0.8} offsetX={3} offsetY={-6} />
+        </div>
+
         <motion.div
           className="flex items-center justify-center w-10 h-10 rounded-full bg-primary shadow-lg"
           style={{
             rotate: useTransform(scrollYProgress, [0.2, 0.5, 0.8], [-5, 0, 5]),
+            scaleX: trainScaleX,
           }}
         >
           <Train className="w-5 h-5 text-primary-foreground" />
