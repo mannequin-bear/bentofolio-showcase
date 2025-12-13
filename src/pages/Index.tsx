@@ -136,11 +136,11 @@ const Index = () => {
       <Navbar isSoundEnabled={isSoundEnabled} onSoundToggle={toggleSound} />
       <HeroSection data={DATA.hero} />
       <TechMarquee />
-      <RailwayDivider />
+      <RailwayDivider direction="left-to-right" />
       <AboutSection data={DATA.about} />
-      <RailwayDivider />
+      <RailwayDivider direction="right-to-left" />
       <ProjectsSection projects={DATA.projects} />
-      <RailwayDivider />
+      <RailwayDivider direction="left-to-right" />
       <ArticlesSection articles={DATA.articles} />
       <Footer />
     </div>
