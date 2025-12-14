@@ -6,7 +6,7 @@ import { TeacupMascot } from "./TeacupMascot";
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
