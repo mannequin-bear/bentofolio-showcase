@@ -10,12 +10,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-interface NavbarProps {
-  isSoundEnabled: boolean;
-  onSoundToggle: () => void;
-}
-
-export function Navbar({ isSoundEnabled, onSoundToggle }: NavbarProps) {
+export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -48,7 +43,7 @@ export function Navbar({ isSoundEnabled, onSoundToggle }: NavbarProps) {
             >
               Get in Touch
             </a>
-            <TeacupMascot isSoundEnabled={isSoundEnabled} onSoundToggle={onSoundToggle} />
+            <TeacupMascot />
           </div>
 
           {/* Mobile Menu Button */}

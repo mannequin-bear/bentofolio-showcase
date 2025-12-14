@@ -145,12 +145,22 @@ export function RailwayDivider({ direction = "left-to-right" }: RailwayDividerPr
         })}
       </svg>
 
-      {/* Animated Train with Smoke */}
+      {/* Animated Train with Smoke - follows curve path */}
       <motion.div
-        className="absolute top-1/2 -translate-y-1/2"
+        className="absolute"
         style={{
           left: useTransform(trainProgress, (v) => `${v}%`),
+          top: useTransform(trainProgress, (v) => {
+            // Calculate Y position along the sine curve
+            const t = v / 100;
+            const baseY = 60; // Center of the curve
+            const amplitude = 20; // How much the curve oscillates
+            const y = baseY + Math.sin(t * Math.PI * 2) * -amplitude;
+            // Convert SVG coordinates to percentage (viewBox height is 120)
+            return `${(y / 120) * 100}%`;
+          }),
           x: "-50%",
+          y: "-50%",
         }}
       >
         {/* Smoke particles - positioned behind the train */}
@@ -172,7 +182,12 @@ export function RailwayDivider({ direction = "left-to-right" }: RailwayDividerPr
         <motion.div
           className="flex items-center justify-center w-10 h-10 rounded-full bg-primary shadow-lg"
           style={{
-            rotate: useTransform(scrollYProgress, [0.2, 0.5, 0.8], [-5, 0, 5]),
+            rotate: useTransform(trainProgress, (v) => {
+              // Calculate rotation based on curve slope
+              const t = v / 100;
+              const slope = Math.cos(t * Math.PI * 2) * -20; // Derivative of sine
+              return slope * (direction === "right-to-left" ? -1 : 1);
+            }),
             scaleX: trainScaleX,
           }}
         >

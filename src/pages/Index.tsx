@@ -6,7 +6,6 @@ import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArticlesSection } from "@/components/ArticlesSection";
 import { Footer } from "@/components/Footer";
 import { RailwayDivider } from "@/components/RailwayDivider";
-import { useScrollSound } from "@/hooks/useScrollSound";
 
 // ============================================
 // EDIT YOUR CONTENT HERE
@@ -129,18 +128,17 @@ const DATA = {
 };
 
 const Index = () => {
-  const { isSoundEnabled, toggleSound } = useScrollSound();
-
   return (
     <div className="min-h-screen bg-background">
-      <Navbar isSoundEnabled={isSoundEnabled} onSoundToggle={toggleSound} />
+      <Navbar />
+      <RailwayDivider direction="left-to-right" />
       <HeroSection data={DATA.hero} />
       <TechMarquee />
-      <RailwayDivider direction="left-to-right" />
-      <AboutSection data={DATA.about} />
       <RailwayDivider direction="right-to-left" />
-      <ProjectsSection projects={DATA.projects} />
+      <AboutSection data={DATA.about} />
       <RailwayDivider direction="left-to-right" />
+      <ProjectsSection projects={DATA.projects} />
+      <RailwayDivider direction="right-to-left" />
       <ArticlesSection articles={DATA.articles} />
       <Footer />
     </div>
