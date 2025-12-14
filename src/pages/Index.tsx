@@ -4,6 +4,7 @@ import { TechMarquee } from "@/components/TechMarquee";
 import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ArticlesSection } from "@/components/ArticlesSection";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { RailwayDivider } from "@/components/RailwayDivider";
 
@@ -139,6 +140,7 @@ const Index = () => {
       <ProjectsSection projects={DATA.projects} />
       <RailwayDivider direction="left-to-right" />
       <ArticlesSection articles={DATA.articles} />
+      <ContactSection />
       <Footer />
     </div>
   );
