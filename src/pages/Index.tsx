@@ -131,14 +131,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <RailwayDivider direction="left-to-right" />
       <HeroSection data={DATA.hero} />
       <TechMarquee />
-      <RailwayDivider direction="right-to-left" />
-      <AboutSection data={DATA.about} />
       <RailwayDivider direction="left-to-right" />
-      <ProjectsSection projects={DATA.projects} />
+      <AboutSection data={DATA.about} />
       <RailwayDivider direction="right-to-left" />
+      <ProjectsSection projects={DATA.projects} />
+      <RailwayDivider direction="left-to-right" />
       <ArticlesSection articles={DATA.articles} />
       <Footer />
     </div>

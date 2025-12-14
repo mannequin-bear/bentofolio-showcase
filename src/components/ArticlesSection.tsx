@@ -14,7 +14,7 @@ interface ArticlesSectionProps {
 
 export function ArticlesSection({ articles }: ArticlesSectionProps) {
   return (
-    <section id="articles" className="py-20 px-4 md:px-8 bg-secondary/30">
+    <section id="blog" className="py-20 px-4 md:px-8 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export function ArticlesSection({ articles }: ArticlesSectionProps) {
             Blog
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Latest Articles
+            Latest Posts
           </h2>
         </motion.div>
 

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, ArrowDown } from "lucide-react";
 import { BackgroundGears } from "./BackgroundGears";
+import { SilkBackground } from "./SilkBackground";
 
 interface HeroData {
   name: string;
@@ -20,6 +21,7 @@ interface HeroSectionProps {
 export function HeroSection({ data }: HeroSectionProps) {
   return (
     <section className="min-h-screen flex items-center justify-center relative px-4 pt-20 overflow-hidden">
+      <SilkBackground />
       <BackgroundGears />
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
